@@ -11,7 +11,7 @@
 
 <meta name="author" content="John Bouranis" />
 
-<meta name="date" content="2022-02-08" />
+<meta name="date" content="2022-02-15" />
 
 <title>Comparison of Ho Lab Clinical Trials</title>
 
@@ -273,7 +273,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Comparison of Ho Lab Clinical Trials</h1>
 <h4 class="author">John Bouranis</h4>
-<h4 class="date">2022-02-08</h4>
+<h4 class="date">2022-02-15</h4>
 
 </div>
 
@@ -388,8 +388,9 @@ full_set %&gt;%
   mutate(mse = paste0(round(mean, 3), &#39;±&#39;, round(se, 2))) %&gt;%
   dplyr::select(-mean, -se) %&gt;%
   pivot_wider(names_from = &#39;time&#39;, values_from = &#39;mse&#39;) %&gt;%
-  knitr::kable(.)</code></pre>
+  knitr::kable(., caption = &#39;Average Total µMol SFN Metabolites Recovered at Each Time Point&#39;)</code></pre>
 <table style="width:100%;">
+<caption>Average Total µMol SFN Metabolites Recovered at Each Time Point</caption>
 <colgroup>
 <col width="10%" />
 <col width="12%" />
@@ -462,8 +463,9 @@ full_set %&gt;%
   mutate(mse = paste0(round(mean, 3), &#39;±&#39;, round(se, 2))) %&gt;%
   dplyr::select(-mean, -se) %&gt;%
   pivot_wider(names_from = &#39;time&#39;, values_from = &#39;mse&#39;) %&gt;%
-  knitr::kable(.)</code></pre>
+  knitr::kable(., caption = &#39;Average µMol SFN-NAC Recovered at Each Time Point&#39;)</code></pre>
 <table>
+<caption>Average µMol SFN-NAC Recovered at Each Time Point</caption>
 <thead>
 <tr class="header">
 <th align="left">Study</th>
@@ -539,7 +541,7 @@ ggplot(SFN_cs, aes(x = umol_SFN, y = cs, color = Study)) +
   dplyr::select(-mean, -se) %&gt;%
   arrange(umol_SFN) %&gt;%
   dplyr::select(Study, n_participants, umol_SFN, mse) %&gt;%
-  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
+  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE (µMol)&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
   knitr::kable(.)</code></pre>
 <table>
 <thead>
@@ -547,7 +549,7 @@ ggplot(SFN_cs, aes(x = umol_SFN, y = cs, color = Study)) +
 <th align="left">Study</th>
 <th align="right"># Participants</th>
 <th align="right">µMol Fed</th>
-<th align="left">Mean ± SE</th>
+<th align="left">Mean ± SE (µMol)</th>
 </tr>
 </thead>
 <tbody>
@@ -628,7 +630,7 @@ ggplot(NAC_cs, aes(x = umol_SFN, y = cs, color = Study)) +
   dplyr::select(-mean, -se) %&gt;%
   arrange(umol_SFN) %&gt;%
   dplyr::select(Study, n_participants, umol_SFN, mse) %&gt;%
-  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
+  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE (µMol)&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
   knitr::kable(.)</code></pre>
 <table>
 <thead>
@@ -636,7 +638,7 @@ ggplot(NAC_cs, aes(x = umol_SFN, y = cs, color = Study)) +
 <th align="left">Study</th>
 <th align="right"># Participants</th>
 <th align="right">µMol Fed</th>
-<th align="left">Mean ± SE</th>
+<th align="left">Mean ± SE (µMol)</th>
 </tr>
 </thead>
 <tbody>
@@ -722,7 +724,7 @@ ggplot(NAC_cs, aes(x = umol_SFN, y = cs, color = Study)) +
   dplyr::select(-mean, -se) %&gt;%
   arrange(g_sprouts) %&gt;%
   dplyr::select(Study, n_participants, g_sprouts, mse) %&gt;%
-  rename(&#39;Grams Fed&#39; = g_sprouts, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) 
+  rename(&#39;Grams Fed&#39; = g_sprouts, &#39;Mean ± SE (µMol)&#39; = mse, &#39;# Participants&#39; = n_participants) 
 
 
 DT::datatable(SFNtab,
@@ -731,8 +733,8 @@ DT::datatable(SFNtab,
            options = list(pageLength = 8,
                           dom = &#39;Bfrtip&#39;,
                           scrollX = TRUE))      </code></pre>
-<div id="htmlwidget-389e231b4e0d58b56fc7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-389e231b4e0d58b56fc7">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"12\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"22\" data-max=\"102\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Clarke","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Atwell"],[4,1,4,3,3,2,2,2,1,2,12,3,2,2,2,2,2,10],[22,26.5,28.9,29.03,29.66,30.4,34.5,35,36.38,40,40,41.6,47.1,54,58,64,71,102],["71.423±18.78","95.39±NA","87.35±4.82","77.128±10.24","74.684±18.82","37.174±14.45","103.333±8.34","124.896±20.85","109.645±NA","74.687±0.74","156.393±15.39","128.98±19.95","80.355±8.4","173.921±27.45","188.383±3.71","171.449±35.17","160.486±6.98","103.441±8.98"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th># Participants<\/th>\n      <th>Grams Fed<\/th>\n      <th>Mean ± SE<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"dom":"Bfrtip","scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-10896618744744ee287d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-10896618744744ee287d">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"12\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"22\" data-max=\"102\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Clarke","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Atwell"],[4,1,4,3,3,2,2,2,1,2,12,3,2,2,2,2,2,10],[22,26.5,28.9,29.03,29.66,30.4,34.5,35,36.38,40,40,41.6,47.1,54,58,64,71,102],["71.423±18.78","95.39±NA","87.35±4.82","77.128±10.24","74.684±18.82","37.174±14.45","103.333±8.34","124.896±20.85","109.645±NA","74.687±0.74","156.393±15.39","128.98±19.95","80.355±8.4","173.921±27.45","188.383±3.71","171.449±35.17","160.486±6.98","103.441±8.98"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th># Participants<\/th>\n      <th>Grams Fed<\/th>\n      <th>Mean ± SE (µMol)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"dom":"Bfrtip","scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="sfn-nac-2" class="section level4">
 <h4>SFN-NAC</h4>
@@ -750,7 +752,7 @@ DT::datatable(SFNtab,
   dplyr::select(-mean, -se) %&gt;%
   arrange(g_sprouts) %&gt;%
   dplyr::select(Study, n_participants, g_sprouts, mse) %&gt;%
-  rename(&#39;Grams Fed&#39; = g_sprouts, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) 
+  rename(&#39;Grams Fed&#39; = g_sprouts, &#39;Mean ± SE (µMol)&#39; = mse, &#39;# Participants&#39; = n_participants) 
 
 
 DT::datatable(bigtable,
@@ -759,8 +761,8 @@ DT::datatable(bigtable,
            options = list(pageLength = 8,
                           dom = &#39;Bfrtip&#39;,
                           scrollX = TRUE))      </code></pre>
-<div id="htmlwidget-b02244f3c0fca36c10e2" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b02244f3c0fca36c10e2">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"12\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"22\" data-max=\"102\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Clarke","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Atwell"],[4,1,4,3,3,2,2,2,1,2,12,3,2,2,2,2,2,10],[22,26.5,28.9,29.03,29.66,30.4,34.5,35,36.38,40,40,41.6,47.1,54,58,64,71,102],["57.559±14.87","78.52±NA","70.272±3.68","60.307±8.39","60.9±17.02","30.595±11.6","83.091±5.89","98.78±12.16","85.496±NA","60.579±0.35","112.14±10.7","103.878±17.73","66.371±6.6","132.178±24.58","143.986±6.44","133.327±25.53","122.474±8.49","75.853±6.85"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th># Participants<\/th>\n      <th>Grams Fed<\/th>\n      <th>Mean ± SE<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"dom":"Bfrtip","scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e22cb63db5f52c074826" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e22cb63db5f52c074826">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"12\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"22\" data-max=\"102\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Clarke","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Bouranis","Atwell"],[4,1,4,3,3,2,2,2,1,2,12,3,2,2,2,2,2,10],[22,26.5,28.9,29.03,29.66,30.4,34.5,35,36.38,40,40,41.6,47.1,54,58,64,71,102],["57.559±14.87","78.52±NA","70.272±3.68","60.307±8.39","60.9±17.02","30.595±11.6","83.091±5.89","98.78±12.16","85.496±NA","60.579±0.35","112.14±10.7","103.878±17.73","66.371±6.6","132.178±24.58","143.986±6.44","133.327±25.53","122.474±8.49","75.853±6.85"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th># Participants<\/th>\n      <th>Grams Fed<\/th>\n      <th>Mean ± SE (µMol)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"dom":"Bfrtip","scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="section-5" class="section level3 unnumbered">
@@ -810,8 +812,9 @@ tidy_plasma &lt;- full_plasma %&gt;%
   mutate(mse = paste0(round(mean, 3), &#39;±&#39;, round(se, 2))) %&gt;%
   dplyr::select(-mean, -se) %&gt;%
   pivot_wider(names_from = &#39;time&#39;, values_from = &#39;mse&#39;) %&gt;%
-  knitr::kable(.)</code></pre>
+  knitr::kable(., caption = &#39;Average Total µMol SFN Metabolites Recovered at Each Time Point&#39;)</code></pre>
 <table>
+<caption>Average Total µMol SFN Metabolites Recovered at Each Time Point</caption>
 <thead>
 <tr class="header">
 <th align="left">Study</th>
@@ -861,8 +864,9 @@ tidy_plasma &lt;- full_plasma %&gt;%
   mutate(mse = paste0(round(mean, 3), &#39;±&#39;, round(se, 2))) %&gt;%
   dplyr::select(-mean, -se) %&gt;%
   pivot_wider(names_from = &#39;time&#39;, values_from = &#39;mse&#39;) %&gt;%
-  knitr::kable(.)</code></pre>
+  knitr::kable(., caption = &#39;Average µMol SFN-CG Recovered at Each Time Point&#39;)</code></pre>
 <table>
+<caption>Average µMol SFN-CG Recovered at Each Time Point</caption>
 <thead>
 <tr class="header">
 <th align="left">Study</th>
@@ -925,7 +929,7 @@ ggplot(SFN_cs_p, aes(x = Study, y = cs, color = Study)) +
   dplyr::select(-mean, -se) %&gt;%
   arrange(umol_SFN) %&gt;%
   dplyr::select(Study, n_participants, umol_SFN, mse) %&gt;%
-  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
+  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean µMol ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
   knitr::kable(.)</code></pre>
 <table>
 <thead>
@@ -933,7 +937,7 @@ ggplot(SFN_cs_p, aes(x = Study, y = cs, color = Study)) +
 <th align="left">Study</th>
 <th align="right"># Participants</th>
 <th align="right">µMol Fed</th>
-<th align="left">Mean ± SE</th>
+<th align="left">Mean µMol ± SE</th>
 </tr>
 </thead>
 <tbody>
@@ -972,7 +976,7 @@ ggplot(CG_cs_p, aes(x = Study, y = cs, color = Study)) +
   dplyr::select(-mean, -se) %&gt;%
   arrange(umol_SFN) %&gt;%
   dplyr::select(Study, n_participants, umol_SFN, mse) %&gt;%
-  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
+  rename(&#39;µMol Fed&#39; = umol_SFN, &#39;Mean µMol ± SE&#39; = mse, &#39;# Participants&#39; = n_participants) %&gt;%
   knitr::kable(.)</code></pre>
 <table>
 <thead>
@@ -980,7 +984,7 @@ ggplot(CG_cs_p, aes(x = Study, y = cs, color = Study)) +
 <th align="left">Study</th>
 <th align="right"># Participants</th>
 <th align="right">µMol Fed</th>
-<th align="left">Mean ± SE</th>
+<th align="left">Mean µMol ± SE</th>
 </tr>
 </thead>
 <tbody>
@@ -1022,8 +1026,9 @@ ggplot(cs_p, aes(x = Study, y = cs, color = Study)) +
   dplyr::select(Study, metabolite, umol_SFN, mse) %&gt;%
   pivot_wider(names_from = &#39;metabolite&#39;, values_from = &#39;mse&#39;) %&gt;%
   rename(&#39;µMol Fed&#39; = umol_SFN) %&gt;%
-  knitr::kable(.)</code></pre>
+  knitr::kable(., caption = &#39;Mean Cumulative µMol of Each Metabolite&#39;)</code></pre>
 <table>
+<caption>Mean Cumulative µMol of Each Metabolite</caption>
 <thead>
 <tr class="header">
 <th align="left">Study</th>
